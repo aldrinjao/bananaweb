@@ -1,0 +1,19 @@
+<div style="width: 100%;text-align: center;margin-top:100px">
+
+  <div class="varietytitle">Where is your farm located?
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let i of items" [value]="i.location">
+          {{i.location}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div style="margin-top:50px;">
+    <button mat-raised-button color="primary">Next</button>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "banana-b7ab6": {
+      "hosting": {
+        "banana": [
+          "banana-b7ab6"
+        ]
+      }
+    }
+  }
+}

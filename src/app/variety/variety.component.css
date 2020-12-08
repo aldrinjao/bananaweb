@@ -1,0 +1,39 @@
+.cardcontainer a{
+    text-decoration: none;
+
+}
+.varietycard {
+    max-width: 250px;
+    margin: 50px 100px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.mobile {
+    margin: 10px;
+
+}
+
+.varietytitle {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    margin: 50px 0px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .varietycard {
+        max-width: 220px;
+        margin: 10px;
+    }
+
+    .varietytitle {
+        margin: 20px 0px;
+        font-size: 26px;
+    }
+
+}

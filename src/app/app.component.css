@@ -1,0 +1,46 @@
+.filter-spacer {
+    width: 100%;
+}
+
+
+.sarainav {
+    background: #0e2c1c;
+}
+
+
+.navmenu a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.customize+* .mat-menu-content {
+    background: #0e2c1c;
+
+}
+
+
+.customize+* .mat-menu-content a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.customize+* .mat-menu-content a button {
+    color: white;
+    text-decoration: none;
+}
+
+
+.navmenu button {
+    color: white;
+}
+
+
+.varietytitle {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    margin: 50px 0px;
+}
+

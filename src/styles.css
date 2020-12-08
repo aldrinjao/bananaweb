@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* 
+@media only screen and (max-width: 800px) {
+  body {
+    background-color: rgb(236, 249, 253);
+  }
+
+
+
+} */
+
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 12.5rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 12.5rem;            /* Footer height */
+  background:#424242;
+  color: white;
+}

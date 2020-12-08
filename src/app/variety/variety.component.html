@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div class="varietytitle">Step 1: Click on a variety of banana
+    </div>
+
+
+    <div class="cardcontainer" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column" fxLayout.sm="column"
+        fxLayoutAlign="center center">
+
+
+
+        <div *ngFor="let i of items;">
+            <a [routerLink]="'/stage'" [state]="{stages:i.heatReqs,variety:i.variety}">
+                <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                    <img mat-card-image src="../../assets/banana images/{{i.variety}}.png" alt="{{i.variety}}">
+                    <mat-card-content>
+                        <p style="text-align: center;font-size: 2em;">
+                            {{i.variety}}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </a>
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+</div>

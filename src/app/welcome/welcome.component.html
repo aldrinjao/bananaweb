@@ -1,0 +1,37 @@
+<!-- UI for browser -->
+
+<div class="welcomediv" ngClass.sm="hideOnWeb" ngClass.xs="hideOnWeb">
+
+    <div fxLayoutAlign="center center" fxLayout="row" style="width: 100%">
+        <div>
+            <img src="./assets/calendar.png" height="300px">
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" style="margin-left: 20px;">
+            <p class="introtext" style="font-size: 36px;">Banana Harvest Date Estimator</p>
+            <p class="introtext" style="font-size: 24px;">Lorem ipsum dolor sit amet </p>
+            <button mat-button class="action" [routerLink]="'/form'" >Calculate Harvest Date</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- UI for mobile -->
+
+<div class="welcomedivmobile" fxLayout="column" ngClass.md="hideOnWeb" ngClass.lg="hideOnWeb" ngClass.xl="hideOnWeb">
+    <div fxLayoutAlign="center center" fxLayout="column" style="width: 100%">
+        <div>
+            <img src="./assets/calendar.png" height="200px">
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center"
+            style="margin: 50px 5px;text-align: center;line-height: normal;">
+            <p class="introtext" style="font-size: 44px;">Banana Harvest Date Estimator</p>
+            <p class="introtext" style="font-size: 24px;">Lorem ipsum dolor sit amet </p>
+            <button mat-button class="action" [routerLink]="'/form'">Calculate Harvest Date</button>
+
+        </div>
+
+    </div>
+</div>

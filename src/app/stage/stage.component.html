@@ -1,0 +1,92 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div class="varietytitle">What does the fruit currently look like?
+    </div>
+    <div style="width: 100%;text-align:center;font-size: 20px;margin-bottom: 10px;">
+        {{currentDate | date:'MMMM dd, yyyy'}}
+    </div>
+
+    <div class="cardcontainer" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+        <!-- 
+        <a [routerLink]="['/harvest', '1']">
+            <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                <img mat-card-image src="../../assets/variety1.png" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </a>
+
+        <a [routerLink]="['/harvest', '2']">
+            <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                <img mat-card-image src="../../assets/variety1.png" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </a>
+
+        <a [routerLink]="'/'">
+            <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                <img mat-card-image src="../../assets/variety1.png" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </a>
+
+        <a [routerLink]="'/'">
+            <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                <img mat-card-image src="../../assets/variety1.png" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </a>
+        <a [routerLink]="'/'">
+            <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                <img mat-card-image src="../../assets/variety1.png" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </a>
+        <a [routerLink]="'/'">
+            <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                <img mat-card-image src="../../assets/variety1.png" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                    <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </a> -->
+
+        <div *ngFor="let item of stages | keyvalue">
+            <a [routerLink]="['/harvest', item.key]" [state]="{heatreq:item.value}">
+                <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                    <img mat-card-image src="../../assets/banana images/{{variety}}/{{item.key}}.png" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                        <p style="text-align: center;font-size: 1.2em;">
+                            BBCH Stage {{item.key}}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</div>

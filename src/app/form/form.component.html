@@ -1,0 +1,249 @@
+<div class="varietytitle">Banana Harvest Calculator
+</div>
+
+<div id="hstepper">
+    <mat-horizontal-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Farm Location</ng-template>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Location</mat-label>
+                    <mat-select formControlName="firstCtrl" required [(value)]="selectedLocation">
+                        <mat-option *ngFor="let i of items" [value]="i.location">
+                            {{i.location}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <div>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+
+        <mat-step [stepControl]="secondFormGroup" label="Crop Variety">
+            <form [formGroup]="secondFormGroup">
+
+
+
+                <mat-radio-group name="secondCtrl" formControlName="secondCtrl" [ngModel]="selectedRadio" style="display: none;">
+                    <mat-radio-button class="example-margin" *ngFor="let i of varItems" [value]="i.variety">
+                        {{i.variety}}</mat-radio-button>
+
+                </mat-radio-group>
+
+                <div class="cardcontainer" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+
+                    <div *ngFor="let i of varItems;" (click)="aaa(i.variety,stepper)">
+
+                        <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                            <img mat-card-image src="../../assets/banana images/{{i.variety}}.png" alt="{{i.variety}}">
+                            <mat-card-content>
+                                <p style="text-align: center;font-size: 2em;">
+                                    {{i.variety}}
+                                </p>
+                            </mat-card-content>
+                        </mat-card>
+
+
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+
+
+
+
+
+        <mat-step [stepControl]="thirdFormGroup" label="Crop Stage">
+            <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Crop Stage</ng-template>
+
+
+                <mat-radio-group name="thirdCtrl" formControlName="thirdCtrl" [ngModel]="selectedStage"  style="display: none;">
+                    <mat-radio-button class="example-margin" *ngFor="let item of stages | keyvalue" [value]="item.key">
+                        {{item.key}}</mat-radio-button>
+
+                </mat-radio-group>
+
+
+
+                <div class="cardcontainer" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <div *ngFor="let item of stages | keyvalue" (click)="cropSelected(item.key,stepper)">
+
+                        <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                            <img mat-card-image src="../../assets/banana images/{{selectedUrl}}/{{item.key}}.png"
+                                alt="Photo of a Shiba Inu">
+                            <mat-card-content>
+                                <p style="text-align: center;font-size: 1.2em;">
+                                    BBCH Stage {{item.key}}
+                                </p>
+                            </mat-card-content>
+                        </mat-card>
+
+
+                    </div>
+
+                </div>
+            </form>
+
+        </mat-step>
+
+        <mat-step>
+            <ng-template matStepLabel>Estimated Harvest Date</ng-template>
+
+            {{currentDate | date:'MMMM dd, yyyy'}}
+            <pre>
+            Location: {{selectedLocation}}
+            </pre>
+            <pre>
+            Variety: {{selectedRadio}}
+            </pre>
+            <pre>
+            Stage: {{selectedStage}}
+            </pre>
+            <pre>
+                <code>
+                    {{growthSched | json}}
+                </code>
+            </pre>
+
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+            </div>
+        </mat-step>
+
+    </mat-horizontal-stepper>
+
+</div>
+
+
+
+
+<!-- vertical -->
+
+
+<div id="vstepper">
+    <mat-vertical-stepper linear #vertstepper>
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Farm Location</ng-template>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Location</mat-label>
+                    <mat-select formControlName="firstCtrl" required [(value)]="selectedLocation">
+                        <mat-option *ngFor="let i of items" [value]="i.location">
+                            {{i.location}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <div>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+
+        <mat-step [stepControl]="secondFormGroup" label="Crop Variety">
+            <form [formGroup]="secondFormGroup">
+
+
+
+                <mat-radio-group name="secondCtrl" formControlName="secondCtrl" [ngModel]="selectedRadio">
+                    <mat-radio-button class="example-margin" *ngFor="let i of varItems" [value]="i.variety">
+                        {{i.variety}}</mat-radio-button>
+
+                </mat-radio-group>
+
+                <div class="cardcontainer" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+
+                    <div *ngFor="let i of varItems;" (click)="aaa(i.variety,vertstepper)">
+
+                        <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                            <img mat-card-image src="../../assets/banana images/{{i.variety}}.png" alt="{{i.variety}}">
+                            <mat-card-content>
+                                <p style="text-align: center;font-size: 2em;">
+                                    {{i.variety}}
+                                </p>
+                            </mat-card-content>
+                        </mat-card>
+
+
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+
+
+
+
+
+        <mat-step [stepControl]="thirdFormGroup" label="Crop Stage">
+            <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Crop Stage</ng-template>
+
+
+                <mat-radio-group name="thirdCtrl" formControlName="thirdCtrl" [ngModel]="selectedStage">
+                    <mat-radio-button class="example-margin" *ngFor="let item of stages | keyvalue" [value]="item.key">
+                        {{item.key}}</mat-radio-button>
+
+                </mat-radio-group>
+
+
+
+                <div class="cardcontainer" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <div *ngFor="let item of stages | keyvalue" (click)="cropSelected(item.key,vertstepper)">
+
+                        <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                            <img mat-card-image src="../../assets/banana images/{{selectedUrl}}/{{item.key}}.png"
+                                alt="Photo of a Shiba Inu">
+                            <mat-card-content>
+                                <p style="text-align: center;font-size: 1.2em;">
+                                    BBCH Stage {{item.key}}
+                                </p>
+                            </mat-card-content>
+                        </mat-card>
+
+
+                    </div>
+
+                </div>
+            </form>
+
+        </mat-step>
+
+        <mat-step>
+            <ng-template matStepLabel>Estimated Harvest Date</ng-template>
+            <pre>
+            Location: {{selectedLocation}}
+            </pre>
+            <pre>
+            Variety: {{selectedRadio}}
+            </pre>
+            <pre>
+            Stage: {{selectedStage}}
+            </pre>
+           
+            <pre>
+                <code>
+                    {{tempdays | json}}
+                </code>
+            </pre>
+
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+            </div>
+        </mat-step>
+
+    </mat-vertical-stepper>
+
+</div>
