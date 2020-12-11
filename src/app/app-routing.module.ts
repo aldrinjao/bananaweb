@@ -6,6 +6,7 @@ import { VarietyComponent } from './variety/variety.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LocationComponent } from './location/location.component';
 import { FormComponent } from './form/form.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'stage', component: StageComponent },
   { path: 'harvest/:stage', component: HarvestComponent },
   { path: 'location', component: LocationComponent },
-  { path: 'form', component: FormComponent }
+  { path: 'form', component: FormComponent },
+  { path: '**', component: NotfoundComponent }
 
 ];
 

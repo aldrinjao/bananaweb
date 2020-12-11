@@ -1,0 +1,42 @@
+.welcomediv {
+    width: 100%;
+    height: 500px;
+    padding-top: 150px;
+    /* background-image: url(../../assets/banana-leaf-lead.png); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.welcomedivmobile {
+    width: 100%;
+    height: 300px;
+    padding-top: 50px;
+    /* background-image: url(../../assets/banana-leaf-lead.png); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fxClass-xs {
+    color: red;
+    flex-direction: column;
+
+}
+
+.fxClass-md,
+.fxClass-lg {
+    flex-direction: row;
+}
+
+.hideOnWeb {
+    display: none !important;
+}
+
+.action {
+    background: #0e2c1c;
+    margin-top: 20px;
+    color: white;
+    height: 50px;
+
+
+}

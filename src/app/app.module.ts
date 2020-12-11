@@ -17,10 +17,15 @@ import { HarvestComponent } from './harvest/harvest.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { LocationComponent } from './location/location.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { MzdTimelineModule } from 'ngx-mzd-timeline';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { AuthService } from './auth.service';
 
 
 
@@ -34,7 +39,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialElevationDirective,
     HarvestComponent,
     LocationComponent,
-    FormComponent
+    FormComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -45,11 +51,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MzdTimelineModule
 
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

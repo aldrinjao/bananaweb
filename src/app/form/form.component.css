@@ -1,12 +1,8 @@
 #vstepper {
-    width: 90%;
-    margin: 10px auto;
     display: none;
 }
 
 #hstepper {
-    width: 90%;
-    margin: 10px auto;
     display: inline;
 }
 
@@ -30,10 +26,16 @@
 /* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
 
 
-.cardcontainer a{
+.cardcontainer {
+    margin: 60px 0px;
+
+}
+
+.cardcontainer a {
     text-decoration: none;
 
 }
+
 .varietycard {
     max-width: 250px;
     width: 200px;
@@ -72,4 +74,35 @@
 
 
 
+#stepper {
+    width: 80%;
+    margin: auto;
+}
 
+
+:host::ng-deep .mat-stepper-horizontal {
+    width: 80%;
+    margin: auto;
+}
+
+.resultLabel {
+    text-align: center;
+    font-size: 24px;
+    line-height: normal;
+    width: 100%;
+    margin: 50px 0px;
+}
+
+.userinput {
+    font-weight: 500;
+    font-style: italic;
+}
+
+.currentStatus {
+    font-size: 16px;
+}
+
+:host::ng-deep mzd-timeline .mzd-timeline-line.no-alternate.left {
+    left: 30px;
+    right: auto;
+}

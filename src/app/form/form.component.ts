@@ -5,6 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-form',
@@ -17,9 +19,12 @@ import { MatStepper } from '@angular/material/stepper';
 export class FormComponent implements OnInit {
 
   selectedLocation = '';
-  selectedRadio = 'Cardaba';
+  selectedRadio = '';
   selectedStage = '60';
   selectedUrl;
+
+  harvestDate;
+
 
   tempdays;
 
@@ -44,9 +49,13 @@ export class FormComponent implements OnInit {
   stages = [];
   currentDate = new Date();
 
+  practices = [];
   growthSched = {};
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private db: AngularFirestore) {
+  alternateSide = 'false';
+  firstContentSide = 'right';
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private db: AngularFirestore, public authService: AuthService) {
 
     this.things = db.collection('weather').valueChanges();
 
@@ -79,7 +88,10 @@ export class FormComponent implements OnInit {
           const tempObject = {
             // insert the id too
             heatReqs: sample.stages,
-            variety: sample.variety
+            variety: sample.variety,
+            practice: sample.practice
+
+
           };
           this.varItems.push(tempObject);
           this.selectedRadio = sample.variety;
@@ -95,6 +107,21 @@ export class FormComponent implements OnInit {
 
 
   }
+  email = 'test@gmail.com';
+  password = '2222222';
+
+  signup() {
+    this.authService.signup(this.email, this.password);
+
+    this.email = this.password = '';
+  }
+
+
+  login() {
+    this.authService.login(this.email, this.password);
+    this.email = this.password = '';
+  }
+
 
   ngOnInit(): void {
 
@@ -121,15 +148,20 @@ export class FormComponent implements OnInit {
       if (element[field] === variety) {
         const param = 'heatReqs';
         this.stages = element[param];
+        const param2 = 'practice';
+        this.practices = element[param2];
       }
     });
     this.selectedUrl = variety.toLowerCase();
     Object.keys(this.stages).forEach((key) => (this.stages[key] === '') && delete this.stages[key]);
+    Object.keys(this.practices).forEach((key) => (this.practices[key] === '') && delete this.practices[key]);
   }
 
   aaa(selectedd, stepper: MatStepper): void {
+
     this.selectedRadio = selectedd;
     this.setStages(selectedd);
+    console.log('forward', selectedd);
     this.goForward(stepper);
 
   }
@@ -142,9 +174,7 @@ export class FormComponent implements OnInit {
     return days;
   }
 
-  calculateHarvestDate(stages): void {
-
-
+  calculateHarvestDate(stages, practices): void {
 
     this.growthSched = {};
     // this.currentDate.setDate(this.currentDate.getDate() + 111);
@@ -152,14 +182,15 @@ export class FormComponent implements OnInit {
     let runningTotal = 0;
     let heatreqRunningTotal = 0;
     const trimmedstages = {};
-
+    const trimmedpractices = {};
     for (const key of Object.keys(stages)) {
       trimmedstages[key] = stages[key];
-
+      trimmedpractices[key] = practices[key];
     }
 
 
     Object.keys(trimmedstages).forEach((key) => (Number(key) <= Number(this.selectedStage)) && delete trimmedstages[key]);
+    Object.keys(trimmedpractices).forEach((key) => (Number(key) <= Number(this.selectedStage)) && delete trimmedpractices[key]);
 
     // recalculate after trimming
 
@@ -189,6 +220,7 @@ export class FormComponent implements OnInit {
             stageDate: this.currentDate,
             bbchStage: hkey,
             req: trimmedstages[hkey],
+            practice: trimmedpractices[hkey],
             gdd: runningTotal
 
           };
@@ -203,7 +235,14 @@ export class FormComponent implements OnInit {
 
     }
 
+    let finalkey;
+    for (const key of Object.keys(this.growthSched)) {
+      finalkey = key;
 
+    }
+
+    this.harvestDate = this.growthSched[finalkey].stageDate;
+    console.log('this.harvestDate :>> ', this.harvestDate);
   }
 
 
@@ -227,7 +266,7 @@ export class FormComponent implements OnInit {
     });
 
     this.goForward(stepper);
-    this.calculateHarvestDate(this.stages);
+    this.calculateHarvestDate(this.stages, this.practices);
 
 
   }
