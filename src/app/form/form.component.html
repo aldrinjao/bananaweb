@@ -139,13 +139,21 @@
                     <div style="padding: 16px;" fxLayout='row'>
                         <div>
 
-                            <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
+                            <!-- <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation>
                                 <img mat-card-image
                                     src="./assets/banana images/{{selectedRadio | lowercase}}/{{g.value.bbchStage}}.png"
                                     alt="Photo of a Shiba Inu">
-                            </mat-card>
+                            </mat-card> -->
 
-
+                        <mat-card class="varietycard" ngClass.sm="mobile" ngClass.xs="mobile" appMaterialElevation style="padding-right: 10px;">
+                            <img mat-card-image src="./assets/banana images/{{selectedRadio | lowercase}}/{{g.value.bbchStage}}.png"
+                                alt="Photo of a Shiba Inu">
+                            <mat-card-content>
+                                <p style="text-align: center;font-size: 1.2em;">
+                                
+                                </p>
+                            </mat-card-content>
+                        </mat-card>
 
 
                         </div>
@@ -297,3 +305,34 @@
     </mat-vertical-stepper>
 
 </div>
+
+
+<h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>
+
+
+<div *ngIf="!(authService.user | async) as userInfo">
+    <input type="text" [(ngModel)]="email" placeholder="email">
+    <input type="password" [(ngModel)]="password" placeholder="email">
+    <pre>
+    <code>
+{{ authService.user | async | json}}
+</code>
+</pre>
+    <button (click)="signup()" [disabled]="!email || !password">
+        Signup
+    </button>
+
+    <button (click)="login()" [disabled]="!email || !password">
+        Login
+    </button>
+
+
+</div>
+
+<button (click)="logout()" *ngIf="authService.user | async">
+    Logout
+</button>
+
+    <button (click)="insertUser()">
+        Insert User data
+    </button>

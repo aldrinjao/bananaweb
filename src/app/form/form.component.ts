@@ -55,9 +55,13 @@ export class FormComponent implements OnInit {
   alternateSide = 'false';
   firstContentSide = 'right';
 
+
+  userInfo;
+
   constructor(private formBuilder: FormBuilder, private router: Router, private db: AngularFirestore, public authService: AuthService) {
 
     this.things = db.collection('weather').valueChanges();
+    console.log('this.things :>> ', this.things);
 
     const myObserver = {
       next: x => {
@@ -122,6 +126,11 @@ export class FormComponent implements OnInit {
     this.email = this.password = '';
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
+
 
   ngOnInit(): void {
 
@@ -134,7 +143,11 @@ export class FormComponent implements OnInit {
     this.thirdFormGroup = this.formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+
+
+
   }
+
 
   goForward(stepper: MatStepper): void {
     stepper.next();
@@ -247,7 +260,10 @@ export class FormComponent implements OnInit {
 
 
 
-
+  insertUser() {
+    console.log(this.authService.userData);
+    this.authService.saveUserData();
+  }
 
 
   cropSelected(stageSelected, stepper: MatStepper): void {
