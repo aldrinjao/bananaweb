@@ -1,0 +1,30 @@
+.action {
+    background: #0e2c1c;
+
+}
+
+.cardcontainer {
+    margin: 20px 20px;
+}
+
+.farmcard {
+    margin: 5px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toolbarNav{  
+    position: fixed;
+    bottom: 0; 
+    color: white;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+    background-color: #0E2C1C;
+
+  -webkit-box-shadow: 1px 1px 2px 3px #002010;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    1px 1px 2px 3px #002010;  /* Firefox 3.5 - 3.6 */
+   box-shadow:        1px 1px 2px 3px #002010;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}

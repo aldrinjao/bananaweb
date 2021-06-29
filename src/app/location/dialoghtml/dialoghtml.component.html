@@ -1,0 +1,39 @@
+<div *ngIf="!data.deleteFlag" [formGroup]="myGroup">
+
+  <h1>Add a farm</h1>
+
+  <div mat-dialog-content>
+    <mat-form-field class="addFormField">
+      <mat-label>Farm Name</mat-label>
+      <input formControlName='farmNameForm' matInput class="form-control" [(ngModel)]="data.farmName" required>
+
+    </mat-form-field>
+
+
+
+
+    <mat-form-field appearance="fill" class="addFormField">
+      <mat-label>Location</mat-label>
+      <mat-select required [(value)]="data.location">
+        <mat-option *ngFor="let l of (data.locationList)" [value]="l">
+          {{l}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </div>
+</div>
+
+
+<div style="margin:30px;">Are you sure?</div>
+<div mat-dialog-actions *ngIf="data.deleteFlag">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" color="warn">Delete</button>
+</div>
+
+
+<div mat-dialog-actions *ngIf="!data.deleteFlag">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="!(data.farmName) || !(data.location)">Save</button>
+</div>

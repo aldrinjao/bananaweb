@@ -1,0 +1,18 @@
+import { Component, OnInit } from '@angular/core';
+import { Auth2Service } from '../../shared/services/auth2.service';
+
+@Component({
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
+})
+export class SignUpComponent implements OnInit {
+
+  constructor(
+    public authService: Auth2Service
+  ) { }
+
+  ngOnInit(): void {
+  }
+
+}

@@ -7,36 +7,76 @@
     background-size: cover;
 }
 
-
-.welcomedivmobile {
-    width: 100%;
-    height: 300px;
-    padding-top: 50px;
-    background-image: url(../../assets/banana-leaf-lead.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+.welcicon {
+    width: 300px;
 }
 
-.fxClass-xs {
-    color: red;
-    flex-direction: column;
-
-}
-
-.fxClass-md,
-.fxClass-lg {
+.welcomecontent {
+    width: 90%;
+    min-height: 10vh;
+    margin: auto;
+    text-align: center;
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-.hideOnWeb {
-    display: none !important;
+.introtext {
+    font-size: 36px;
 }
+
+.tagline {
+    font-size: 24px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 960px) {
+    .welcicon {
+        width: 240px;
+    }
+
+    .welcomecontent {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .welcicon {
+        width: 200px;
+    }
+
+    .welcomediv {
+        padding-top: 80px;
+        background-image: url(../../assets/banana-leaf-lead.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+    .introtext {
+        font-size: 30px;
+    }
+
+    .tagline {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .welcomecontent {
+        flex-direction: column;
+    }
+}
+
 
 .action {
     background: #0e2c1c;
     margin-top: 20px;
     color: white;
     height: 50px;
+}
 
-
+.introtext {
+    line-height: normal;
 }

@@ -1,0 +1,33 @@
+<div style="text-align: center;margin-top:10px;">
+
+
+
+    <div>
+        <h1 style="margin-bottom:0;">{{farmName}}</h1>
+        <h2 style="margin-bottom:0;">{{location}}</h2>
+    </div>
+    <div class="farmcontainer" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+
+        <mat-card *ngFor="let g of treeGroups" class="farmcard">
+            <div>
+                1
+            </div>
+
+
+        </mat-card>
+
+    </div>
+    <mat-toolbar class="toolbarNav">
+        <button mat-icon-button color="white" (click)="goHome()">
+            <mat-icon>home</mat-icon>
+        </button>
+
+        <button mat-icon-button color="white" (click)="addTreeGroup()">
+            <mat-icon class="material-icons">add</mat-icon>
+        </button>
+
+        <button mat-icon-button color="white" (click)="authService.SignOut()">
+            <mat-icon class="material-icons">logout</mat-icon>
+        </button>
+
+    </mat-toolbar>

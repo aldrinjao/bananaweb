@@ -1,35 +1,129 @@
-<mat-toolbar class="sarainav">
-  <mat-toolbar-row>
+<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose style="width: 50%;background: #0e2c1c;"
+    [autoFocus]="false">
 
-    <a href="/"><img src="./assets/sarai-logo.png" height="40px" fxShow="true" fxHide.xs="true"/></a>
-    <a href="/"><img src="./assets/sarai-logo-xs.png" height="40px" fxHide.sm="true" fxHide.md="true" fxHide.lg="true" fxHide.xl="true"/></a>
-    <span class="filter-spacer"></span>
-
-    <div fxShow="true" fxHide.lt-md="true">
-
-      <span class="navmenu">
-        <a href="https://sarai.ph/about-us"><button mat-button>About Us</button></a>
-        <a href="https://sarai.ph/advisories"><button mat-button>Advisory</button></a>
-
-
-
-        <a href="http://maps.sarai.ph"><button mat-button>Maps</button></a>
-
-        <button mat-button [matMenuTriggerFor]="afterMenu">Services</button>
-        <mat-menu #afterMenu="matMenu" xPosition="after" backdropClass="customize">
-          <a href="https://sarai.ph/heat-map-rainfall-outlook"><button mat-menu-item>Rainfall Outlook</button></a>
-          <a href="https://sarai.ph/drought"><button mat-menu-item>Drough Forecast</button></a>
-          <a href="https://sarai.ph/weather-monitoring"><button mat-menu-item>Weather Forecast</button></a>
-          <a href="http://202.92.144.48/"><button mat-menu-item>Sarai Community</button></a>
-        </mat-menu>
-      </span>
+    <!-- (click)="close('toggle button') -->
+    <div style="width: 100%;text-align: center;">
+      <img src="./assets/sarai-logo-xs.png" height="40px" style="text-align: center;padding:5px;">
     </div>
-    <span><img src="./assets/dost-pcaarrd-uplb.png" style="width: 110px;"></span>
 
-  </mat-toolbar-row>
-</mat-toolbar>
+    <a href="/" class="sidemenunav">
+      <div class='sidemenucont'>Home</div>
+    </a>
+    <a href="/notes" class="sidemenunav">
+      <div class='sidemenucont'>About the App</div>
+    </a>
+    <a href="/" class="sidemenunav">
+      <div class='sidemenucont'>About Us</div>
+    </a>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div style="display: flex;flex-direction: column;justify-content:space-between;min-height: 100vh;">
+      <div>
+        <mat-toolbar class="sarainav">
+          <mat-toolbar-row>
+            <span class="material-icons" style="margin:0px 15px 0px 0px;color:white;" (click)="sidenav.open()"
+              fxHide.sm="true" fxHide.md="true" fxHide.lg="true" fxHide.xl="true">
+              menu
+            </span>
+
+            <a href="/banana/"><img src="./assets/sarai-logo.png" height="40px" fxShow="true" fxHide.xs="true" /></a>
+            <img src="./assets/sarai-logo-xs.png" height="40px" fxHide.sm="true" fxHide.md="true" fxHide.lg="true"
+              fxHide.xl="true" (click)="sidenav.open()">
+            <span class="filter-spacer"></span>
+
+            <div fxShow="true" fxHide.lt-md="true">
+
+              <span class="navmenu">
+                <a href="/notes"><button mat-button>About the App</button></a>
+                <a href="https://sarai.ph/about-us"><button mat-button>About Us</button></a>
+                <a href="https://sarai.ph/advisories"><button mat-button>Advisory</button></a>
 
 
 
-  <router-outlet></router-outlet>
+                <a href="http://maps.sarai.ph"><button mat-button>Maps</button></a>
 
+                <button mat-button [matMenuTriggerFor]="afterMenu">Services</button>
+                <mat-menu #afterMenu="matMenu" xPosition="after" backdropClass="customize">
+                  <a href="https://sarai.ph/heat-map-rainfall-outlook"><button mat-menu-item>Rainfall
+                      Outlook</button></a>
+                  <a href="https://sarai.ph/drought"><button mat-menu-item>Drough Forecast</button></a>
+                  <a href="https://sarai.ph/weather-monitoring"><button mat-menu-item>Weather Forecast</button></a>
+                  <a href="http://202.92.144.48/"><button mat-menu-item>Sarai Community</button></a>
+                </mat-menu>
+              </span>
+            </div>
+            <span style="line-height: 50%;"><img src="./assets/dost-pcaarrd-uplb.png" style="width: 110px;"></span>
+
+          </mat-toolbar-row>
+        </mat-toolbar>
+
+
+
+        <div>
+
+          <!-- <splash-screen></splash-screen> -->
+          <router-outlet></router-outlet>
+
+        </div>
+
+      </div>
+      <div>
+        <footer id="footer">
+          <div class='flex-container'>
+            <div class='flex-content'>
+              <div class='flex-column'>
+                <span class='footertitle'>About SARAi</span>
+                <span>Project SARAi aims to develop a national crop forecasting and monitoring system for nine priority
+                  crops:
+                  rice, corn, banana, coconut, coffee, cacao, sugarcane, tomato, and soybean.</span>
+                <span>This project is funded by DOST-PCAARRD. </span>
+              </div>
+
+            </div>
+            <div class='flex-content'>
+              <div class='flex-column'>
+                <span class='footertitle'>Connect With Us</span>
+
+                <div class='connect-items'>
+                  <mat-icon>call</mat-icon>
+                  <span>+63 (049) 536 2302,+63 (049) 536 2836</span>
+                </div>
+
+                <div class='connect-items'>
+                  <mat-icon>email</mat-icon>
+                  <span>project.sarai.uplb@gmail.com</span>
+                </div>
+
+                <div class='connect-items'>
+                  <mat-icon>location_on</mat-icon>
+                  <span>SESAM UPLB, College, Laguna Philippines 4031</span>
+                </div>
+
+
+              </div>
+
+            </div>
+            <div class='flex-content'>
+              <div class='flex-column'>
+                <span class='footertitle'>About SARAi </span>
+                <span>Project SARAi aims to develop a national crop forecasting and monitoring system for nine priority
+                  crops:
+                  rice, corn, banana, coconut, coffee, cacao, sugarcane, tomato, and soybean.</span>
+                <span>This project is funded by DOST-PCAARRD. </span>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </footer>
+
+      </div>
+
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

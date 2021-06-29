@@ -1,1 +1,20 @@
+.action {
+    background: #0e2c1c;
 
+}
+
+.cardcontainer {
+    margin: 20px 20px;
+}
+
+.farmcard {
+    margin: 5px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.farmcontainer{
+    margin-top:20px;
+}

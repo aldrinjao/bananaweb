@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { HarvestComponent } from './harvest/harvest.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 import { LocationComponent } from './location/location.component';
 import { FormComponent } from './form/form.component';
@@ -25,8 +26,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MzdTimelineModule } from 'ngx-mzd-timeline';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { AuthService } from './auth.service';
+import { AuthService } from './shared/services/auth.service';
+import { Auth2Service } from './shared/services/auth2.service';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 
+
+import { PwaService } from './shared/services/pwa.service';
+import { UpdateService } from './shared/services/update.service';
+import { FarmService } from './shared/services/farm.service';
+
+import { PromptComponent } from './prompt/prompt.component';
+import { LoginComponent } from './admin/login/login.component';
+import { RegisterComponent } from './admin/register/register.component';
+import { NotesComponent } from './notes/notes.component';
+import { DialoghtmlComponent } from './location/dialoghtml/dialoghtml.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { FarmviewComponent } from './components/farmview/farmview.component';
+
+const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt();
 
 
 @NgModule({
@@ -40,24 +59,43 @@ import { AuthService } from './auth.service';
     HarvestComponent,
     LocationComponent,
     FormComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    SplashScreenComponent,
+    PromptComponent,
+    LoginComponent,
+    RegisterComponent,
+    NotesComponent,
+    DialoghtmlComponent,
+    SignInComponent,
+    DashboardComponent,
+    SignUpComponent,
+    FarmviewComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     DemoMaterialModule,
     FlexLayoutModule,
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,
     MzdTimelineModule
 
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    Auth2Service,
+    UpdateService,
+    FarmService,
+    { provide: APP_INITIALIZER, useFactory: initializer, deps: [PwaService], multi: true },
+    AngularFireAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

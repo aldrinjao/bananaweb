@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UpdateService } from '../shared/services/update.service';
+
 
 @Component({
   selector: 'app-welcome',
@@ -7,15 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
+
   varieties = {};
   things;
   test = [];
 
-  constructor() { }
+  constructor(private updateSW: UpdateService) { }
 
   ngOnInit(): void {
 
+    this.updateSW.checkUpdates();
+
   }
+
 
 }
 

@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "autobuild": "ng build --prod --base-href /banana/ --output-path ~/Desktop/aldrinjao.github.io/banana &&  cd ~/Desktop/aldrinjao.github.io && git add . && git commit -m 'auto' && git push origin master && cd ~/Desktop/banana",
+    "autoDO": "ng build --prod --base-href /banana/ --output-path ~/Desktop/aldrinjao.github.io/banana && rsync -azvuh ~/Desktop/aldrinjao.github.io/* deploy@188.166.235.103:/var/www/saraiapps.xyz/html/",
+    "autoboth": "ng build --prod --base-href /banana/ --output-path ~/Desktop/aldrinjao.github.io/banana && rsync -azvuh ~/Desktop/aldrinjao.github.io/* deploy@188.166.235.103:/var/www/saraiapps.xyz/html/ && cd ~/Desktop/aldrinjao.github.io && git add . && git commit -m 'auto' && git push origin master && cd ~/Desktop/banana",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,8 +26,11 @@
     "@angular/platform-browser-dynamic": "~10.1.3",
     "@angular/router": "~10.1.3",
     "@angular/service-worker": "~10.1.3",
+    "@auth0/angular-jwt": "^5.0.2",
     "angularfire2": "^5.4.2",
     "firebase": "^7.24.0",
+    "material-design-icons": "^3.0.1",
+    "material-icons-font": "^2.1.0",
     "ngx-auth-firebaseui": "^0.1.2",
     "ngx-mzd-timeline": "^1.0.1",
     "promise-polyfill": "8.2.0",
@@ -33,13 +39,18 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "@angular-devkit/architect": "<0.900 || ^0.900.0-0 || ^9.0.0-0",
     "@angular-devkit/build-angular": "~0.1001.3",
     "@angular/cli": "~10.1.3",
     "@angular/compiler-cli": "~10.1.3",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "firebase-tools": "^7.12.0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -50,11 +61,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2",
-    "@angular-devkit/architect": "<0.900 || ^0.900.0-0 || ^9.0.0-0",
-    "firebase-tools": "^7.12.0",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1"
+    "typescript": "~4.0.2"
   }
 }

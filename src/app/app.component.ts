@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,17 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'banana';
+  title = 'Banana';
+
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
+  reason = '';
+
+  close(reason: string): void {
+    this.reason = reason;
+    this.sidenav.close();
+  }
+
 }
 
 

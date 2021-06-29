@@ -8,20 +8,7 @@
 
 
 
-@media only screen and (max-width: 800px) {
-    #vstepper {
-        width: 90%;
-        margin: 10px auto;
-        display: inline;
-    }
 
-    #hstepper {
-        width: 90%;
-        margin: 10px auto;
-        display: none;
-    }
-
-}
 
 /* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
 
@@ -36,9 +23,14 @@
 
 }
 
+.verticalCard {
+    width: 120px;
+    margin: 10px 10px;
+}
+
 .varietycard {
     max-width: 250px;
-    width: 200px;
+    width: 240px;
     margin: 10px 50px;
 }
 
@@ -56,21 +48,17 @@
     width: 100%;
     text-align: center;
     font-size: 30px;
+    margin-bottom: 10px;
+    line-height: normal;
+}
+
+.varietysubtitle {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
 }
 
 
-@media only screen and (max-width: 600px) {
-    .varietycard {
-        max-width: 220px;
-        margin: 10px;
-    }
-
-    .varietytitle {
-        margin: 20px 0px;
-        font-size: 26px;
-    }
-
-}
 
 
 
@@ -90,7 +78,6 @@
     font-size: 24px;
     line-height: normal;
     width: 100%;
-    margin: 50px 0px;
 }
 
 .userinput {
@@ -99,10 +86,64 @@
 }
 
 .currentStatus {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 :host::ng-deep mzd-timeline .mzd-timeline-line.no-alternate.left {
     left: 30px;
     right: auto;
+}
+
+
+@media only screen and (max-width: 767px) {
+    #vstepper {
+        width: 100%;
+        margin: 10px auto 10px;
+        display: inline;
+
+    }
+
+    #hstepper {
+        width: 100%;
+        margin: 10px auto;
+        display: none;
+    }
+
+
+    .verticalCard {
+        width: 120px;
+        max-width: 220px;
+        margin: 10px auto;
+    }
+
+    .varietytitle {
+        margin: 20px 0px;
+        font-size: 20px;
+    }
+
+    .currentStatus {
+        text-align: center;
+    }
+
+    :host::ng-deep .mat-step-header {
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+    }
+
+    :host::ng-deep .mat-vertical-content {
+        padding: 15px;
+    }
+
+    .cardcontainer {
+        margin: 20px auto;
+    }
+
+    :host::ng-deep .mat-vertical-content-container {
+        margin: auto;
+    }
+
+    :host::ng-deep .mat-stepper-vertical-line::before {
+        border-left-color: rgba(0, 0, 0, 0);
+    }
 }

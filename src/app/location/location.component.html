@@ -1,19 +1,84 @@
-<div style="width: 100%;text-align: center;margin-top:100px">
+<div id='loading' *ngIf="visible">
+  loading
+</div>
 
-  <div class="varietytitle">Where is your farm located?
+<div id='loaded' *ngIf="!visible">
+  <h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>
+
+  <div *ngIf="!(authService.user | async) as userInfo">
+
+
+    <input type="text" [(ngModel)]="email" placeholder="email">
+    <input type="password" [(ngModel)]="password" placeholder="password">
+
+    <button (click)="signup()" [disabled]="!email || !password">
+      Signup
+    </button>
+
+    <button (click)="login()" [disabled]="!email || !password">
+      Login
+    </button>
+
+
   </div>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Location</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let i of items" [value]="i.location">
-          {{i.location}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+
+  <div class="cardcontainer" fxLayout="column wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+
+    <button (click)="addFarm()" mat-fab class="action">
+      <mat-icon>add</mat-icon>
+    </button>
+
+
+
+    <div class="farmcontainer" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+
+      <div *ngIf="authService.userInfo | async">
+
+        <mat-card *ngFor="let farm of (authService.userInfo | async)?.farms" class="farmcard">
+          <div>
+            {{farm.index}} | {{farm.name}} || {{farm.location}}
+          </div>
+
+          <div>
+            <button mat-mini-fab color="white" style="margin-right: 10px;">
+              <mat-icon [matMenuTriggerFor]="qweq">more_horiz</mat-icon>
+            </button>
+
+            <mat-menu #qweq="matMenu">
+              <button (click)='editFarm(farm.index,farm.location,farm.name)' mat-menu-item>
+                <mat-icon style="margin-right: 20px;">edit</mat-icon>
+                Edit
+              </button>
+              <button (click)='deleteFarm(farm.index)' mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                Delete
+              </button>
+            </mat-menu>
+            <button (click)="viewFarmDetail(farm.index)" mat-mini-fab color="white">
+              <mat-icon>launch</mat-icon>
+            </button>
+
+          </div>
+        </mat-card>
+
+      </div>
+    </div>
+
+
+
   </div>
-  <div style="margin-top:50px;">
-    <button mat-raised-button color="primary">Next</button>
-  </div>
+
+
+  <button (click)="logout()" *ngIf="authService.user | async">
+    Logout
+  </button>
+
+  <button (click)="setFarmData()" *ngIf="authService.user | async">
+    Insert User data
+  </button>
+
+  <button (click)="updateFarms()" *ngIf="authService.user | async">
+    Get User data
+  </button>
 
 </div>
